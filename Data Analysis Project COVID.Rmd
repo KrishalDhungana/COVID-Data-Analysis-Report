@@ -14,23 +14,8 @@ library(maps)
 
 # Project introduction
 
-Since early 2020, the COVID-19 pandemic has been affecting almost everything.
-
-Since events are still unfolding and whatever data are out there are constantly being updated, revised, debated and reinterpreted, the understanding that will come out from this project will inevitably be incomplete at the best, likely inconclusive and plainly unreasonable at worst. So the main goal of the project is not to come up with the most reasonable or objective interpretations of the data or events involved, as what look reasonable now might become way off the mark as more information comes to light. The main goal of this project is to understand as much as possible what the stories the data sets available might tell. Put it in the cliched language: "let the data talk", or in the more interesting phrase: "let the data ask questions".
-
-The theme of the story that we would like to understand is the following: 
-
-**What factors can be related to the level of observed infection / recovery / death by COVID-19 at a given time and given region**. 
-
-The project is an attempt at teasing out some more detailed information. Note that the term **relationship** may be interpreted at least in the following three categories:
-
-**1)** Causes higher / lower levels of COVID-19 infection / recovery / death
-
-**2)** Caused by higher / lower levels of COVID-19 infection / recovery / death
-
-**3)** Shows a correlation but causality unclear
-
-There are more sophisticated methods that can provide more information to distinguish these three interpretations. For this project, it would be enough to give an intuitive interpretation in terms of one of these categories if you identified any relationship among the various factors. It is also completely reasonable that, from the data sets we have, it may appear that some factors do not correlate much to the COVID-19 -- which is also knowledge gained.
+**What factors can be related to the level of observed infection / recovery / death by COVID-19 at a given time and given region?**
+**How has COVID-19 impacted society in terms of economic changes and lifestyle trends?**
 
 In the following, besides the **4** online data sets on COVID-19, there are **21** data sets concerning a number of potential factors of interest, such as *educational*, *political*, *economical*, *employment*, *health*, *demographic*, *infrastructure*, *self perception* factors. A number of COVID-19 related data sets are included, which by the collective work of many organizations, are updated real-time. The *WorldRegions.csv* data from World Regions Classification list are included.
 
@@ -84,13 +69,6 @@ gg <- gg + geom_map(
   gg <- gg + scale_fill_continuous(low = 'thistle2', high = 'darkblue',
   guide = 'colorbar')
   gg
-```
-
-You may run the code block below (and remove the `include=FALSE` option) to see the mismatch between some names of the (same) regions in the two data sets `world` and `COVID_cases`. It means that the `semi_join` performed above showing the map is not exactly perfect. Adaptation to `iu$region` was made in the plot above, while there are still some that are not dealt with, e.g. `Antigua and Barbuda` is one row in `COVID_cases`, while two rows are used in `world` map data. Similar issues might affect other data sets provided and you may need to manually change some of them so that they have the same names throughout.
-
-```{r include=FALSE}
-world %>% distinct(region) %>% anti_join(COVID_cases, by = c("region" = "location"))
-COVID_cases %>% distinct(location) %>% anti_join(world, by = c("location" = "region"))
 ```
 
 # The Setup:
